@@ -187,4 +187,33 @@
   height: 39px;
   display: flex;
   flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+.nav_bottom_left > ul {
+  padding: 0;
+  margin-left: 10px;
+  display: flex;
+  align-items: center;
+}
+.nav_bottom_navigation_links {
+  font-size: 14px;
+  font-weight: bold;
+  list-style: none;
+  border: 0.1px solid transparent;
+  display: flex;
+  align-items: center;
+  border-radius: 2px;
+  cursor: pointer;
+  height: 31px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin-left: 10px;
+}
+.nav_bottom_navigation_links:hover {
+  border: 0.1px solid whitesmoke;
+}
+.nav_bottom_all_menu_icon {
+  font-size: 30px;
+  color: #fff;
 }

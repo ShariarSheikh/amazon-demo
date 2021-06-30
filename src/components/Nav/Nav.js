@@ -2,7 +2,7 @@ import React from "react";
 import styles from "../../styles/componentsStyles/Nav.module.css";
 import logo from "../../assets/images/logo.png";
 
-import { IoLocationOutline, IoSearch } from "react-icons/io5";
+import { IoLocationOutline, IoSearch, IoMenuOutline } from "react-icons/io5";
 import { RiArrowDropDownFill } from "react-icons/ri";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 
@@ -73,7 +73,7 @@ const Nav1 = () => {
           <h4>& Orders</h4>
         </div>
         <div className={styles.header_top_cart_div}>
-          <AiOutlineShoppingCart className={styles.header_top_cart_icon} /> 
+          <AiOutlineShoppingCart className={styles.header_top_cart_icon} />
           <h4>Cart</h4>
         </div>
       </div>
@@ -85,7 +85,27 @@ const Nav1 = () => {
 const Nav2 = () => {
   return (
     <div id={styles.nav_bottom}>
-      <h1>nav2</h1>
+      <div className={styles.nav_bottom_left}>
+        <ul>
+          <li className={styles.nav_bottom_navigation_links}>
+            <IoMenuOutline className={styles.nav_bottom_all_menu_icon} /> All
+          </li>
+          <li className={styles.nav_bottom_navigation_links}>Today's Deals</li>
+          <li className={styles.nav_bottom_navigation_links}>
+            Customer Services
+          </li>
+          <li className={styles.nav_bottom_navigation_links}>Gift Cards</li>
+          <li className={styles.nav_bottom_navigation_links}>Registry</li>
+          <li className={styles.nav_bottom_navigation_links}>Sell</li>
+        </ul>
+      </div>
+      <div className={styles.nav_bottom_right}>
+        <ul>
+          <li className={styles.nav_bottom_navigation_links} style={{marginRight:"20px"}}>
+            Amazon's response to COVID-19
+          </li>
+        </ul>
+      </div>
     </div>
   );
 };
