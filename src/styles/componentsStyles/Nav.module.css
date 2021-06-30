@@ -110,7 +110,7 @@
   height: 100%;
   display: flex;
   align-items: center;
-  min-width: 375px;
+  min-width: 400px;
 }
 .header_top_right_flag_div {
   height: 50px;
@@ -172,8 +172,8 @@
 .header_top_cart_div:hover {
   border: 1px solid white;
 }
-.header_top_cart_div > h4{
-    align-self: initial;
+.header_top_cart_div > h4 {
+  align-self: initial;
 }
 .header_top_cart_icon {
   font-size: 35px;
