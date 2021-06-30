@@ -1,11 +1,15 @@
-import React from 'react'
+import React from "react";
+import styles from "../../styles/pageStyles/Main.module.css";
+import TopBanner from "./components/TopBanner";
+import ProductsFeed from "./components/ProductsFeed";
 
 const Main = () => {
-    return (
-        <div>
-             <h1>Main</h1>
-        </div>
-    )
-}
+  return (
+    <div className={styles.main}>
+      <TopBanner />
+      <ProductsFeed />
+    </div>
+  );
+};
 
-export default Main
+export default Main;

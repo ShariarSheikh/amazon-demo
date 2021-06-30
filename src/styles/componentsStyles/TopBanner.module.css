@@ -1,0 +1,13 @@
+.banner_container {
+  position: relative;
+}
+.mySwiper {
+  position: relative;
+  width: 100%;
+  height: 560px !important;
+}
+.banner_img {
+  position: relative;
+  width: 100%;
+  object-fit: cover;
+}
