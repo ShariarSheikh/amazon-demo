@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { AiOutlineAmazon, AiOutlineGlobal } from "react-icons/ai";
 import styles from "../../styles/componentsStyles/Footer.module.css";
 
@@ -35,8 +35,17 @@ const amazonPaymentProducts = [
 ];
 
 const Footer = () => {
+  const location = useLocation();
   return (
-    <footer className={styles.footer}>
+    <footer
+      className={styles.footer}
+      style={{
+        display:
+          location.pathname === "/signin" || location.pathname === "/register"
+            ? "none"
+            : "",
+      }}
+    >
       <div className={styles.footer_container}>
         <div className={styles.footer_top}>
           <a href="#top">
@@ -87,7 +96,7 @@ const Footer = () => {
           </div>
         </div>
         <div className={styles.hr_and_margin_top}></div>
-        <FooterBottom/>
+        <FooterBottom />
       </div>
     </footer>
   );

@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import "./App.css";
 import Footer from "./components/Footer/Footer";
 import Nav from "./components/Nav/Nav";
@@ -7,10 +7,11 @@ import Main from "./pages/Main/Main";
 import Cart from "./pages/Cart/Cart";
 import LeftNavigationModal from "./components/LeftNavigationModal/LeftNavigationModal";
 import { useSelector } from "react-redux";
+import SignIn from "./pages/SignIn/SignIn";
+import Register from "./pages/Register/Register";
 
 function App() {
   const openModal = useSelector((state) => state.openModal);
-
   useEffect(() => {
     if (openModal) {
       document.body.style.overflow = "hidden";
@@ -23,16 +24,23 @@ function App() {
     <Router>
       {openModal && <LeftNavigationModal openModal={openModal} />}
       <Nav />
-      <Switch>
-        <div className="App">
+      <div className="App">
+        <Switch>
           <Route exact path="/">
             <Main />
           </Route>
           <Route path="/cart">
             <Cart />
           </Route>
-        </div>
-      </Switch>
+          <Router path="/signin">
+            <SignIn />
+          </Router>
+          <Router path="/register">
+            <Register />
+          </Router>
+        </Switch>
+      </div>
+
       <Footer />
     </Router>
   );

@@ -8,10 +8,19 @@ import { IoLocationOutline, IoSearch } from "react-icons/io5";
 import { RiArrowDropDownFill } from "react-icons/ri";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { HiOutlineMenu } from "react-icons/hi";
-import { useHistory } from "react-router-dom";
+import { useHistory, useLocation } from "react-router-dom";
 const Nav = () => {
+  const location = useLocation();
   return (
-    <nav id={styles.nav}>
+    <nav
+      id={styles.nav}
+      style={{
+        display:
+          location.pathname === "/signin" || location.pathname === "/register"
+            ? "none"
+            : "",
+      }}
+    >
       <Nav1 />
       <Nav2 />
     </nav>
