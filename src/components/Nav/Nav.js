@@ -1,6 +1,8 @@
 import React from "react";
 import styles from "../../styles/componentsStyles/Nav.module.css";
 import logo from "../../assets/images/logo.png";
+import { useDispatch } from "react-redux";
+import { openModalLeft } from "../../redux/toggleSlice/toggleSlice";
 
 import { IoLocationOutline, IoSearch, IoMenuOutline } from "react-icons/io5";
 import { RiArrowDropDownFill } from "react-icons/ri";
@@ -83,11 +85,16 @@ const Nav1 = () => {
 
 //nav bottom navigation
 const Nav2 = () => {
+  const dispatch = useDispatch();
+
   return (
     <div id={styles.nav_bottom}>
       <div className={styles.nav_bottom_left}>
         <ul>
-          <li className={styles.nav_bottom_navigation_links}>
+          <li
+            className={styles.nav_bottom_navigation_links}
+            onClick={() => dispatch(openModalLeft())}
+          >
             <IoMenuOutline className={styles.nav_bottom_all_menu_icon} /> All
           </li>
           <li className={styles.nav_bottom_navigation_links}>Today's Deals</li>
@@ -101,7 +108,10 @@ const Nav2 = () => {
       </div>
       <div className={styles.nav_bottom_right}>
         <ul>
-          <li className={styles.nav_bottom_navigation_links} style={{marginRight:"20px"}}>
+          <li
+            className={styles.nav_bottom_navigation_links}
+            style={{ marginRight: "20px" }}
+          >
             Amazon's response to COVID-19
           </li>
         </ul>
