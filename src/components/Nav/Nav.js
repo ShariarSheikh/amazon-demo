@@ -4,10 +4,11 @@ import logo from "../../assets/images/logo.png";
 import { useDispatch } from "react-redux";
 import { openModalLeft } from "../../redux/toggleSlice/toggleSlice";
 
-import { IoLocationOutline, IoSearch, IoMenuOutline } from "react-icons/io5";
+import { IoLocationOutline, IoSearch } from "react-icons/io5";
 import { RiArrowDropDownFill } from "react-icons/ri";
 import { AiOutlineShoppingCart } from "react-icons/ai";
-
+import { HiOutlineMenu } from "react-icons/hi";
+import { useHistory } from "react-router-dom";
 const Nav = () => {
   return (
     <nav id={styles.nav}>
@@ -21,11 +22,17 @@ export default Nav;
 
 //nav top navigation
 const Nav1 = () => {
+  const router = useHistory();
   return (
     <div id={styles.nav_top}>
       {/* component 1 */}
       <div className={styles.nav_top_first_component}>
-        <img className={styles.logo} src={logo} alt="logo" />
+        <img
+          className={styles.logo}
+          src={logo}
+          alt="logo"
+          onClick={() => router.push("/")}
+        />
         <div className={styles.nav_top_show_location}>
           <div>
             <IoLocationOutline className={styles.location_icon} />
@@ -95,7 +102,7 @@ const Nav2 = () => {
             className={styles.nav_bottom_navigation_links}
             onClick={() => dispatch(openModalLeft())}
           >
-            <IoMenuOutline className={styles.nav_bottom_all_menu_icon} /> All
+            <HiOutlineMenu className={styles.nav_bottom_all_menu_icon} /> All
           </li>
           <li className={styles.nav_bottom_navigation_links}>Today's Deals</li>
           <li className={styles.nav_bottom_navigation_links}>
