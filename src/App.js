@@ -32,12 +32,12 @@ function App() {
           <Route path="/cart">
             <Cart />
           </Route>
-          <Router path="/signin">
+          <Route path="/signin">
             <SignIn />
-          </Router>
-          <Router path="/register">
+          </Route>
+          <Route path="/register">
             <Register />
-          </Router>
+          </Route>
         </Switch>
       </div>
 

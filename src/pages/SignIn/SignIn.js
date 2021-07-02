@@ -17,8 +17,10 @@ const SignIn = () => {
       <div className={styles.form_container}>
         <form className={styles.form}>
           <h1>Sign-In</h1>
-          <label>Name</label>
+          <label>Email</label>
           <input type="text" />
+          <label>Password</label>
+          <input type="password" />
           <button type="submit">Continue</button>
           <div>
             <p>

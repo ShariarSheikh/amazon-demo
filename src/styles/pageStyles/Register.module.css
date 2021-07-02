@@ -1,7 +1,162 @@
-.Register{
-    width: 100%;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
+.Register {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: white;
+}
+.logo_container {
+  height: 80px;
+  overflow: hidden;
+}
+.logo {
+  width: 150px;
+  object-fit: contain;
+}
+.form_container {
+  width: 348px;
+  height: auto;
+  position: relative;
+}
+
+.form {
+  width: 100%;
+  min-height: 280px;
+  display: flex;
+  flex-direction: column;
+  padding: 20px 26px;
+  border: 1px #ddd solid;
+  border-radius: 4px;
+  color: #111;
+}
+.form > h1 {
+  font-weight: 400;
+  font-size: 28px;
+  margin-bottom: 10px;
+}
+.form > label {
+  display: block;
+  padding-left: 2px;
+  padding-bottom: 4px;
+  font-weight: 700;
+  font-size: 13px;
+}
+.form > input {
+  background-color: #fff;
+  height: 32px;
+  border: 1px rgb(206, 204, 204) solid;
+  border-radius: 4px;
+  margin-bottom: 10px;
+  padding-left: 5px;
+}
+.form > button {
+  height: 32px;
+  font-size: 13px;
+  margin-top: 14px;
+  border: 1px rgb(206, 204, 204) solid;
+  cursor: pointer;
+  background: linear-gradient(to bottom, #f7dfa5, #f0c14b);
+}
+.form > button:hover {
+  background: linear-gradient(to bottom, #efcc76, #f0c14b);
+}
+.form > div {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.form > div > p {
+  font-size: 12px;
+  text-align: start;
+}
+.form > div > p > span {
+  color: #0066c0;
+}
+.form > div > p > span:hover {
+  text-decoration: underline;
+}
+.haveAccount {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.haveAccount > p {
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+.haveAccount > p > span {
+  color: #0066c0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+.haveAccount > p > span:hover {
+  text-decoration: underline;
+}
+.icon {
+  font-size: 19px;
+}
+.hr1 {
+  width: 100%;
+  height: 4px;
+  margin-bottom: -18px;
+  background: -webkit-linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.14),
+    rgba(0, 0, 0, 0.03) 3px,
+    transparent
+  );
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.14),
+    rgba(0, 0, 0, 0.03) 3px,
+    transparent
+  );
+}
+
+.bottom_container {
+  width: 100%;
+  position: relative;
+  margin-top: 25px;
+  text-align: center;
+}
+.hr {
+  width: 100%;
+  height: 44px;
+  margin-bottom: -18px;
+  background: -webkit-linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.14),
+    rgba(0, 0, 0, 0.03) 3px,
+    transparent
+  );
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.14),
+    rgba(0, 0, 0, 0.03) 3px,
+    transparent
+  );
+}
+.btm_text_top {
+  max-width: 348px;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.btm_text_top > span {
+  font-size: 12px;
+  color: #0066c0;
+  margin-right: 20px;
+}
+.btm_text_top > span:hover {
+  text-decoration: underline;
+}
+.btm_text {
+  text-align: center;
+  font-size: 12px;
+  margin-top: 20px;
+  margin-right: 14px;
 }

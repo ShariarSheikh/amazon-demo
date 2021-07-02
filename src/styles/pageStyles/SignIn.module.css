@@ -43,6 +43,7 @@
   height: 32px;
   border: 1px rgb(206, 204, 204) solid;
   border-radius: 4px;
+  margin-bottom: 15px;
 }
 .form > button {
   height: 32px;
