@@ -146,7 +146,10 @@ const Nav1 = () => {
           onMouseEnter={() => showAccountComponent()}
           onMouseLeave={() => showAccountComponent()}
         >
-          <div className={styles.header_top_right_text_div}>
+          <div
+            className={styles.header_top_right_text_div}
+            onClick={() => router.push("/signin")}
+          >
             <p>Hello,Sign in</p>
             <h4>
               Account & List{" "}
@@ -224,11 +227,17 @@ const SelectProjectCategory = ({ setCategoryLink }) => {
 };
 
 const AccountComponent = () => {
+  const router = useHistory();
   return (
     <div className={styles.account_component}>
       <div className={styles.makeArrow}></div>
       <div>
-        <button className={styles.signinBtn}>Sign In</button>
+        <button
+          className={styles.signinBtn}
+          onClick={() => router.push("/signin")}
+        >
+          Sign In
+        </button>
         <p className={styles.newCostumerText}>
           New Customer? <small>Start Here</small>{" "}
         </p>
