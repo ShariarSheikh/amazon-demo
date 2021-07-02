@@ -123,6 +123,7 @@ const FooterBottom = () => {
           <img
             className={styles.flag_svg}
             src="https://img.icons8.com/color/48/000000/bangladesh.png"
+            alt="logo"
           />
           United States
         </div>

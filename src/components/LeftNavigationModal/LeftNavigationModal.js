@@ -132,7 +132,7 @@ const HeaderTop = () => {
 
 const NavigationLinks = () => {
   const router = useHistory();
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const pushToLink = (link) => {
     if (link === "/signin") {
       dispatch(openModalLeft());
@@ -147,14 +147,12 @@ const NavigationLinks = () => {
         </li>
         {/* digitalContent link */}
         {digitalContent.map(({ text, id }) => (
-          <>
-            <li className={styles.links} key={id}>
-              <div>
-                {text}
-                <RiArrowRightSLine className={styles.arrow_left} />
-              </div>
-            </li>
-          </>
+          <li className={styles.links} key={id}>
+            <div>
+              {text}
+              <RiArrowRightSLine className={styles.arrow_left} />
+            </div>
+          </li>
         ))}
         <li className={styles.ul_btm_line}></li>
       </div>
@@ -163,14 +161,12 @@ const NavigationLinks = () => {
         {/* shopByDepartment links */}
         <li className={styles.navigation_link_header}>Shop By Department </li>
         {shopByDepartment.map(({ text, id }) => (
-          <>
-            <li className={styles.links} key={id}>
-              <div>
-                {text}
-                <RiArrowRightSLine className={styles.arrow_left} />
-              </div>
-            </li>
-          </>
+          <li className={styles.links} key={id}>
+            <div>
+              {text}
+              <RiArrowRightSLine className={styles.arrow_left} />
+            </div>
+          </li>
         ))}
         <li className={styles.ul_btm_line}></li>
       </div>
@@ -179,14 +175,12 @@ const NavigationLinks = () => {
         {/* shopByDepartment links */}
         <li className={styles.navigation_link_header}>Programs & Features</li>
         {programsFeatures.map(({ text, id }) => (
-          <>
-            <li className={styles.links} key={id}>
-              <div>
-                {text}
-                <RiArrowRightSLine className={styles.arrow_left} />
-              </div>
-            </li>
-          </>
+          <li className={styles.links} key={id}>
+            <div>
+              {text}
+              <RiArrowRightSLine className={styles.arrow_left} />
+            </div>
+          </li>
         ))}
         <li className={styles.ul_btm_line}></li>
       </div>
@@ -195,18 +189,16 @@ const NavigationLinks = () => {
         {/* shopByDepartment links */}
         <li className={styles.navigation_link_header}>Programs & Features</li>
         {helpSettings.map(({ text, id, link }) => (
-          <>
-            <li
-              className={styles.links}
-              key={id}
-              onClick={() => pushToLink(link)}
-            >
-              <div>
-                {text}
-                {/* <RiArrowRightSLine className={styles.arrow_left} /> */}
-              </div>
-            </li>
-          </>
+          <li
+            className={styles.links}
+            key={id}
+            onClick={() => pushToLink(link)}
+          >
+            <div>
+              {text}
+              {/* <RiArrowRightSLine className={styles.arrow_left} /> */}
+            </div>
+          </li>
         ))}
       </div>
     </ul>
