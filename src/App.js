@@ -6,11 +6,17 @@ import Nav from "./components/Nav/Nav";
 import Main from "./pages/Main/Main";
 import Cart from "./pages/Cart/Cart";
 import LeftNavigationModal from "./components/LeftNavigationModal/LeftNavigationModal";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import SignIn from "./pages/SignIn/SignIn";
 import Register from "./pages/Register/Register";
+import { fireAuth } from "./firebase.config";
+import { selectUser, signInUser } from "./redux/userSlice/userSlice";
+import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
+import ProductsList from "./pages/ProductsList/ProductsList";
 
 function App() {
+  const user = useSelector(selectUser);
+  const dispatch = useDispatch();
   const openModal = useSelector((state) => state.openModal);
   useEffect(() => {
     if (openModal) {
@@ -19,6 +25,31 @@ function App() {
       document.body.style.overflow = "auto";
     }
   }, [openModal]);
+
+  useEffect(() => {
+    fireAuth.onAuthStateChanged((userAuth) => {
+      if (userAuth) {
+        dispatch(
+          signInUser({
+            email: userAuth.email,
+            uid: userAuth.uid,
+            displayName: userAuth.displayName,
+            photoURL: userAuth.photoURL,
+          })
+        );
+      } else {
+        // dispatch(signOutUser());
+        fireAuth
+          .signOut()
+          .then(() => {
+            // Sign-out successful.
+          })
+          .catch((error) => {
+            // An error happened.
+          });
+      }
+    });
+  }, []);
 
   return (
     <Router>
@@ -29,8 +60,11 @@ function App() {
           <Route exact path="/">
             <Main />
           </Route>
-          <Route path="/cart">
-            <Cart />
+          <PrivateRoute path="/cart">
+             <Cart />
+          </PrivateRoute>
+          <Route path="/products">
+            <ProductsList/>
           </Route>
           <Route path="/signin">
             <SignIn />

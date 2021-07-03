@@ -1,7 +1,7 @@
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 import styles from "../../styles/componentsStyles/Nav.module.css";
 import logo from "../../assets/images/logo.png";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { openModalLeft } from "../../redux/toggleSlice/toggleSlice";
 
 import { IoLocationOutline, IoSearch } from "react-icons/io5";
@@ -11,6 +11,7 @@ import { HiOutlineMenu } from "react-icons/hi";
 import { useHistory, useLocation } from "react-router-dom";
 import { useEffect } from "react";
 import { searchCategoryLink } from "../../productList";
+import { selectUser, signOutUser } from "../../redux/userSlice/userSlice";
 
 const Nav = () => {
   const location = useLocation();
@@ -40,6 +41,7 @@ const Nav1 = () => {
   const [searchProduct, setSearchProduct] = useState("");
   const [searchProductList, setSearchProductList] = useState([]);
   const router = useHistory();
+  const userAuth = useSelector(selectUser);
 
   // open and hide category
   useEffect(() => {
@@ -148,9 +150,16 @@ const Nav1 = () => {
         >
           <div
             className={styles.header_top_right_text_div}
-            onClick={() => router.push("/signin")}
+            onClick={() => !userAuth && router.push("/signin")}
           >
-            <p>Hello,Sign in</p>
+            <p>
+              Hello,{" "}
+              {userAuth ? (
+                <span>{userAuth.displayName}</span>
+              ) : (
+                <span> Sign in</span>
+              )}
+            </p>
             <h4>
               Account & List{" "}
               <RiArrowDropDownFill
@@ -159,14 +168,18 @@ const Nav1 = () => {
               />{" "}
             </h4>
           </div>
-          {accountComponent && <AccountComponent />}
+
+          <div>{accountComponent && <AccountComponent />}</div>
         </div>
 
         <div className={styles.header_top_right_text_div}>
           <p>Returns</p>
           <h4>& Orders</h4>
         </div>
-        <div className={styles.header_top_cart_div}>
+        <div
+          className={styles.header_top_cart_div}
+          onClick={() => router.push("/cart")}
+        >
           <AiOutlineShoppingCart className={styles.header_top_cart_icon} />
           <h4>Cart</h4>
         </div>
@@ -228,15 +241,19 @@ const SelectProjectCategory = ({ setCategoryLink }) => {
 
 const AccountComponent = () => {
   const router = useHistory();
+  const userAuth = useSelector(selectUser);
+  const dispatch = useDispatch();
   return (
     <div className={styles.account_component}>
       <div className={styles.makeArrow}></div>
       <div>
         <button
           className={styles.signinBtn}
-          onClick={() => router.push("/signin")}
+          onClick={() =>
+            !userAuth ? router.push("/signin") : dispatch(signOutUser())
+          }
         >
-          Sign In
+          {userAuth ? "Sign Out" : "Sign In"}
         </button>
         <p className={styles.newCostumerText}>
           New Customer? <small>Start Here</small>{" "}

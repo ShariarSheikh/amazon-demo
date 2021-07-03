@@ -1,10 +1,59 @@
-import React from "react";
-import { useHistory } from "react-router-dom";
+import React, { useState } from "react";
+import { useHistory, useLocation } from "react-router-dom";
 import styles from "../../styles/pageStyles/Register.module.css";
 import { RiArrowDropRightFill } from "react-icons/ri";
+import { signInUser } from "../../redux/userSlice/userSlice";
+import { useDispatch } from "react-redux";
+import { fireAuth } from "../../firebase.config";
 
 const Register = () => {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [rePassword, setRePassword] = useState("");
+  const [wrongPass, setWrongPass] = useState(true);
+  const dispatch = useDispatch();
   const router = useHistory();
+  let location = useLocation();
+  let { from } = location.state || { from: { pathname: "/" } };
+
+  const createAccount = () => {
+    if (password === rePassword) {
+      setWrongPass(false);
+    }
+    password === rePassword &&
+      password.length > 5 &&
+      fireAuth
+        .createUserWithEmailAndPassword(email, password)
+        .then((userAuth) => {
+          userAuth.user
+            .updateProfile({
+              displayName: name,
+              photoURL: "",
+            })
+            .then(() => {
+              dispatch(
+                signInUser({
+                  email: userAuth.user.email,
+                  uid: userAuth.user.uid,
+                  displayName: name,
+                  photoURL: "",
+                })
+              );
+              router.replace(from);
+              setName("");
+              setEmail("");
+              setPassword("");
+              setRePassword("");
+            });
+        })
+        .catch((err) => {
+          alert(err.message);
+        });
+  };
+  const registerHandler = () => {
+    createAccount();
+  };
   return (
     <div className={styles.Register}>
       <div className={styles.logo_container}>
@@ -18,11 +67,24 @@ const Register = () => {
         <form className={styles.form}>
           <h1>Create Account</h1>
           <label>Your Name</label>
-          <input type="text" />
+          <input
+            type="text"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+          />
           <label>Email</label>
-          <input type="email" />
+          <input
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
           <label>Password</label>
-          <input type="password" placeholder="At lest 6 characters" />
+          <input
+            type="password"
+            placeholder="At lest 6 characters"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
           <p
             style={{
               fontSize: "12px",
@@ -33,8 +95,27 @@ const Register = () => {
             Passwords must be at least 6 characters.
           </p>
           <label>Re Enter Password</label>
-          <input type="password" />
-          <button type="submit">Continue</button>
+          <input
+            type="password"
+            value={rePassword}
+            onChange={(e) => setRePassword(e.target.value)}
+          />
+          {!wrongPass && (
+            <p
+              style={{
+                fontSize: "12px",
+                marginTop: "-7px",
+                marginBottom: "15px",
+                color: "red",
+              }}
+            >
+              Password don't match
+            </p>
+          )}
+
+          <button type="button" onClick={registerHandler}>
+            Continue
+          </button>
           <div>
             <p>
               By creating an account, you agree to Amazon's

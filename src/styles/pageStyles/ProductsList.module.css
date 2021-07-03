@@ -1,0 +1,9 @@
+.ProductsList {
+  width: 100%;
+  min-height: 100vh;
+  background-color: white;
+}
+.ProductsList_container{
+    width:1600px;
+    margin: auto;
+}

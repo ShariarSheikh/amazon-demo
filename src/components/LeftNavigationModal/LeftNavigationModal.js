@@ -1,11 +1,12 @@
 import React from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { openModalLeft } from "../../redux/toggleSlice/toggleSlice";
 import styles from "../../styles/componentsStyles/LeftNavigationModal.module.css";
 import { VscChromeClose } from "react-icons/vsc";
 import { CgProfile } from "react-icons/cg";
 import { RiArrowRightSLine } from "react-icons/ri";
 import { useHistory } from "react-router-dom";
+import { selectUser } from "../../redux/userSlice/userSlice";
 
 const digitalContent = [
   {
@@ -123,9 +124,14 @@ const LeftNavigationModal = ({ openModal }) => {
 export default LeftNavigationModal;
 
 const HeaderTop = () => {
+  const userAuth = useSelector(selectUser);
   return (
     <div className={styles.profile_header}>
-      <CgProfile className={styles.profile_icon} /> <h1>Hello, Sign In</h1>
+      <CgProfile className={styles.profile_icon} />{" "}
+      <h1>
+        Hello,{" "}
+        {userAuth ? <span>{userAuth.displayName}</span> : <span> Sign in</span>}{" "}
+      </h1>
     </div>
   );
 };
