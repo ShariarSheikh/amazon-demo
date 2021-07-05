@@ -6,7 +6,7 @@ import { VscChromeClose } from "react-icons/vsc";
 import { CgProfile } from "react-icons/cg";
 import { RiArrowRightSLine } from "react-icons/ri";
 import { useHistory } from "react-router-dom";
-import { selectUser } from "../../redux/userSlice/userSlice";
+import { selectUser, signOutUser } from "../../redux/userSlice/userSlice";
 
 const digitalContent = [
   {
@@ -82,11 +82,6 @@ const helpSettings = [
     text: "Customer Services",
     link: "/",
   },
-  {
-    id: 5,
-    text: "Sign In",
-    link: "/signin",
-  },
 ];
 
 const LeftNavigationModal = ({ openModal }) => {
@@ -139,6 +134,8 @@ const HeaderTop = () => {
 const NavigationLinks = () => {
   const router = useHistory();
   const dispatch = useDispatch();
+  const userAuth = useSelector(selectUser);
+
   const pushToLink = (link) => {
     if (link === "/signin") {
       dispatch(openModalLeft());
@@ -200,12 +197,17 @@ const NavigationLinks = () => {
             key={id}
             onClick={() => pushToLink(link)}
           >
-            <div>
-              {text}
-              {/* <RiArrowRightSLine className={styles.arrow_left} /> */}
-            </div>
+            <div>{text}</div>
           </li>
         ))}
+        <li
+          className={styles.links}
+          onClick={() =>
+            !userAuth ? router.push("/signin") : dispatch(signOutUser())
+          }
+        >
+          <div>{userAuth && userAuth ? "Sign Out" : "Sign In"}</div>
+        </li>
       </div>
     </ul>
   );

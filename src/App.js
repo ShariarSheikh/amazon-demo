@@ -38,7 +38,6 @@ function App() {
           })
         );
       } else {
-        // dispatch(signOutUser());
         fireAuth
           .signOut()
           .then(() => {
@@ -61,17 +60,21 @@ function App() {
             <Main />
           </Route>
           <PrivateRoute path="/cart">
-             <Cart />
+            <Cart />
           </PrivateRoute>
-          <Route path="/products">
-            <ProductsList/>
+          <Route path="/products/:device">
+            <ProductsList />
           </Route>
-          <Route path="/signin">
-            <SignIn />
-          </Route>
-          <Route path="/register">
-            <Register />
-          </Route>
+          {!user && (
+            <>
+              <Route path="/signin">
+                <SignIn />
+              </Route>
+              <Route path="/register">
+                <Register />
+              </Route>
+            </>
+          )}
         </Switch>
       </div>
 

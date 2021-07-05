@@ -1,10 +1,46 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "../../styles/pageStyles/SignIn.module.css";
 import { RiArrowDropRightFill } from "react-icons/ri";
-import { useHistory } from "react-router-dom";
+import { useHistory, useLocation } from "react-router-dom";
+import { signInUser } from "../../redux/userSlice/userSlice";
+import { useDispatch } from "react-redux";
+import { fireAuth } from "../../firebase.config";
 
 const SignIn = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+
+  const dispatch = useDispatch();
+
   const router = useHistory();
+  let location = useLocation();
+  let { from } = location.state || { from: { pathname: "/" } };
+
+  const loginHandler = async (e) => {
+    e.preventDefault();
+    await login();
+  };
+  const login = () => {
+    fireAuth
+      .signInWithEmailAndPassword(email, password)
+      .then((userCredential) => {
+        const user = userCredential;
+        dispatch(
+          signInUser({
+            email: user.user.email,
+            uid: user.user.uid,
+            displayName: user.user.displayName,
+            photoURL: user.user.photoURL,
+          })
+        );
+        router.replace(from);
+      })
+      .catch((err) => {
+        setError(err.message);
+      });
+  };
+
   return (
     <div className={styles.SignIn}>
       <div>
@@ -18,10 +54,34 @@ const SignIn = () => {
         <form className={styles.form}>
           <h1>Sign-In</h1>
           <label>Email</label>
-          <input type="text" />
+          <input
+            type="email"
+            required
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
           <label>Password</label>
-          <input type="password" />
-          <button type="submit">Continue</button>
+          <input
+            type="password"
+            required
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          {error && (
+            <p
+              style={{
+                fontSize: "12px",
+                marginTop: "-7px",
+                marginBottom: "15px",
+                color: "red",
+              }}
+            >
+              {error}
+            </p>
+          )}
+          <button type="submit" onClick={loginHandler}>
+            Continue
+          </button>
           <div>
             <p>
               By continuing, you agree to Amazon's

@@ -70,12 +70,14 @@ const Register = () => {
           <input
             type="text"
             value={name}
+            required
             onChange={(e) => setName(e.target.value)}
           />
           <label>Email</label>
           <input
             type="email"
             value={email}
+            required
             onChange={(e) => setEmail(e.target.value)}
           />
           <label>Password</label>
@@ -83,6 +85,7 @@ const Register = () => {
             type="password"
             placeholder="At lest 6 characters"
             value={password}
+            required
             onChange={(e) => setPassword(e.target.value)}
           />
           <p
@@ -98,6 +101,7 @@ const Register = () => {
           <input
             type="password"
             value={rePassword}
+            required
             onChange={(e) => setRePassword(e.target.value)}
           />
           {!wrongPass && (
