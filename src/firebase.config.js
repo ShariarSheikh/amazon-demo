@@ -2,12 +2,12 @@ import firebase from "firebase/app";
 import "firebase/auth";
 
 // const config = {
-//   apiKey: process.env.REACT_APP_APIKEY,
-//   authDomain: process.env.REACT_APP_AUTHDOMAIN,
-//   projectId: process.env.REACT_APP_PROJECTID,
-//   storageBucket: process.env.REACT_APP_STOREGEBUCKET,
+//   apiKey: process.env.REACT_APP_API_KEY,
+//   authDomain: process.env.REACT_APP_AUTH_DOMAIN,
+//   projectId: process.env.REACT_APP_PROJECT_ID,
+//   storageBucket: process.env.REACT_APP_STOREGE_BUCKET,
 //   messagingSenderId: process.env.REACT_APP_MESSAGINGSENDERID,
-//   appId: process.env.REACT_APP_APPID,
+//   appId: process.env.REACT_APP_APP_ID,
 // };
 
 const config = {
@@ -19,7 +19,6 @@ const config = {
   appId: "1:609957822382:web:b904208ce7160918d5123f",
 };
 
-//firebase auth
 const firebaseApp = firebase.initializeApp(config);
 const fireAuth = firebase.auth();
 

@@ -13,6 +13,7 @@ import { fireAuth } from "./firebase.config";
 import { selectUser, signInUser } from "./redux/userSlice/userSlice";
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 import ProductsList from "./pages/ProductsList/ProductsList";
+import ProductsDetails from "./pages/ProductsDetails/ProductsDetails";
 
 function App() {
   const user = useSelector(selectUser);
@@ -59,11 +60,14 @@ function App() {
           <Route exact path="/">
             <Main />
           </Route>
-          <PrivateRoute path="/cart">
+          <Route path="/cart">
             <Cart />
-          </PrivateRoute>
+          </Route>
           <Route path="/products/:device">
             <ProductsList />
+          </Route>
+          <Route path="/details/:device/:id">
+            <ProductsDetails />
           </Route>
           {!user && (
             <>

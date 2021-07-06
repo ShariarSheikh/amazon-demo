@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
-import { useParams } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import { amazonbasics, artsCrafts, computer, oculus } from "../../allProducts";
 import styles from "../../styles/pageStyles/ProductsList.module.css";
 
@@ -14,6 +14,7 @@ const ProductsList = () => {
   const [rating] = useState(
     Math.floor(Math.random() * (MAX_RATING - MIN_RATING + 1)) + MIN_RATING
   );
+  const router = useHistory();
   const { device } = useParams();
 
   useEffect(() => {
@@ -29,7 +30,14 @@ const ProductsList = () => {
     if (device === "Arts & Crafts") {
       setProducts(artsCrafts);
     }
+    if (device === "Find your ideal TV") {
+      setProducts(oculus);
+    }
   }, [device]);
+
+  const DetailsHandler = (device, id) => {
+    router.push(`/details/${device}/${id}`);
+  };
 
   return (
     <div className={styles.ProductsList}>
@@ -47,7 +55,11 @@ const ProductsList = () => {
         <div className={styles.products_feed}>
           {products &&
             products.map(({ id, title, photo, price }) => (
-              <div className={styles.products} key={id}>
+              <div
+                className={styles.products}
+                key={id}
+                onClick={() => DetailsHandler(device, id)}
+              >
                 <div className={styles.img_container}>
                   <img src={photo} alt="products" />
                 </div>
