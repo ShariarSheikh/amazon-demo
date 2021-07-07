@@ -12,6 +12,7 @@ import { useHistory, useLocation } from "react-router-dom";
 import { useEffect } from "react";
 import { searchCategoryLink } from "../../productList";
 import { selectUser, signOutUser } from "../../redux/userSlice/userSlice";
+import { selectProduct } from "../../redux/AddProductSlice/AddProductSlice";
 
 const Nav = () => {
   const location = useLocation();
@@ -42,6 +43,8 @@ const Nav1 = () => {
   const [searchProductList, setSearchProductList] = useState([]);
   const router = useHistory();
   const userAuth = useSelector(selectUser);
+  // length of added product in cart
+  const cartItems = useSelector(selectProduct);
 
   // open and hide category
   useEffect(() => {
@@ -180,6 +183,7 @@ const Nav1 = () => {
           className={styles.header_top_cart_div}
           onClick={() => router.push("/cart")}
         >
+          <div className={styles.badge}>{cartItems.length}</div>
           <AiOutlineShoppingCart className={styles.header_top_cart_icon} />
           <h4>Cart</h4>
         </div>

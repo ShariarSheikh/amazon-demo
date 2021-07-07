@@ -34,6 +34,7 @@
 .img_container > img {
   width: 100%;
   height: 260px;
+  object-fit: contain;
 }
 .info_container {
   width: 65%;
