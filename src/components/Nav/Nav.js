@@ -152,7 +152,7 @@ const Nav1 = () => {
           onMouseLeave={() => showAccountComponent()}
         >
           <div
-            className={styles.header_top_right_text_div}
+            className={styles.header_top_right_account_div}
             onClick={() => !userAuth && router.push("/signin")}
           >
             <p>
@@ -218,7 +218,7 @@ const Nav2 = () => {
       <div className={styles.nav_bottom_right}>
         <ul>
           <li
-            className={styles.nav_bottom_navigation_links}
+            className={styles.nav_bottom_navigation_links_end}
             style={{ marginRight: "20px" }}
           >
             Amazon's response to COVID-19

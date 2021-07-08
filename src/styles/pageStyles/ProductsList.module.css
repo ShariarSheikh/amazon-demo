@@ -10,6 +10,11 @@
   margin: auto;
   margin-top: 15px;
 }
+@media screen and (max-width: 768px) {
+  .ProductsList_container {
+    width: 98%;
+  }
+}
 .header {
   color: black;
   margin-bottom: 20px;
@@ -38,12 +43,18 @@
   position: relative;
   max-width: 500px;
   width: 30%;
-  height: 370px;
+  height: auto;
   min-width: 326px;
   border-bottom: 2px solid #ddd;
   padding: 10px;
   cursor: pointer;
   margin-left: 12px;
+}
+@media screen and (max-width: 768px) {
+  .products {
+    border-bottom: 1px solid #ddd;
+    min-width: auto;
+  }
 }
 .img_container {
   width: 100%;
@@ -53,6 +64,12 @@
   width: 200px;
   height: 200px;
   object-fit: contain;
+}
+@media screen and (max-width: 768px) {
+  .img_container > img {
+    width: 150px;
+    height: 150px;
+  }
 }
 .info_container {
   width: 100%;
