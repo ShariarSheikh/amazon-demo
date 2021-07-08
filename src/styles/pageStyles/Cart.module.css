@@ -12,6 +12,12 @@
   margin-top: 15px;
   margin-bottom: 30px;
 }
+@media screen and (max-width: 414px) {
+  .cart_container {
+    width: 100%;
+    flex-direction: column;
+  }
+}
 .shoppingCart_container {
   width: 80%;
   background-color: white;
@@ -24,6 +30,13 @@
 @media screen and (max-width: 768px) {
   .shoppingCart_container {
     min-width: auto;
+  }
+}
+@media screen and (max-width: 414px) {
+  .shoppingCart_container {
+    width: 100%;
+    padding: 5px;
+    min-height: 50vh;
   }
 }
 .header {
@@ -46,6 +59,12 @@
     flex-direction: column;
     max-height: 80vh;
     overflow-y: scroll;
+  }
+}
+@media screen and (max-width: 414px) {
+  .items_container {
+    overflow-x: scroll;
+    flex-direction: row;
   }
 }
 .mt_img_container {
@@ -78,6 +97,14 @@
     display: flex;
   }
 }
+@media screen and (max-width: 414px) {
+  .items {
+    flex-direction: column;
+    padding: 5px;
+    min-width: 187px;
+    max-width: 187px;
+  }
+}
 .imgStyles {
   max-height: 220px;
   width: 220px;
@@ -89,6 +116,11 @@
     width: 100px;
   }
 }
+@media screen and (max-width: 414px) {
+  .imgStyles {
+    min-height: 130px;
+  }
+}
 .info {
   display: flex;
   flex-direction: column;
@@ -97,14 +129,34 @@
   color: #0f1111;
   font-size: 18px;
   font-weight: 500;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+@media screen and (max-width: 414px) {
+  .title {
+    font-size: 14px;
+  }
 }
 .price {
   font-size: 18px;
   margin-top: 10px;
 }
+@media screen and (max-width: 414px) {
+  .price {
+    font-size: 14px;
+  }
+}
 .quantity_div {
   width: 100%;
   margin-top: 20px;
+}
+@media screen and (max-width: 414px) {
+  .quantity_div {
+    margin-top: 10px;
+  }
 }
 .quantity_btn {
   border: 1px solid #d5d9d9;
@@ -151,6 +203,12 @@
   background-color: transparent;
   border-radius: 5px;
   min-height: 70vh;
+}
+@media screen and (max-width: 414px) {
+  .cart_subtotal_container {
+    width: 90%;
+    margin-top: 20px;
+  }
 }
 .cart_top {
   position: relative;

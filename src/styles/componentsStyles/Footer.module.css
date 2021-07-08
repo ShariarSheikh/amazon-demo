@@ -33,12 +33,23 @@
 .space_between {
   width: 5%;
 }
+@media screen and (max-width: 414px) {
+  .space_between {
+    width: 0%;
+  }
+}
 .footer_center {
   width: 100%;
   display: flex;
   flex-direction: row;
   justify-content: center;
   margin-top: 40px;
+}
+@media screen and (max-width: 414px) {
+  .footer_center {
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
 }
 .footer_center > div {
   display: flex;
@@ -54,6 +65,11 @@
 .footer_center > div > h4 {
   margin-bottom: 20px;
 }
+@media screen and (max-width: 414px) {
+  .footer_center > div > h4 {
+    font-size: 14px;
+  }
+}
 .footer_center > div > ul {
   padding: 0;
 }
@@ -62,10 +78,20 @@
   list-style: none;
   margin: 0 0 10px;
 }
+@media screen and (max-width: 360px) {
+  .footer_center > div > ul > li {
+    margin: 0 0 3px;
+  }
+}
 .footer_center > div > ul > li > a {
   font-size: 15px;
   color: #fff;
   text-decoration: none;
+}
+@media screen and (max-width: 360px) {
+  .footer_center > div > ul > li > a {
+    font-size: 12px;
+  }
 }
 .footer_center > div > ul > li > a:hover {
   text-decoration: underline;
@@ -99,6 +125,11 @@
   margin-left: 70px;
   display: flex;
 }
+@media screen and (max-width: 414px) {
+  .btn_container {
+    margin-left: 5px;
+  }
+}
 .btn_container > div {
   display: flex;
   align-items: center;
@@ -111,6 +142,11 @@
   height: 34px;
   padding-left: 15px;
   padding-right: 15px;
+}
+@media screen and (max-width: 414px) {
+  .btn_container > div {
+    font-size: 10px;
+  }
 }
 .flag_svg {
   margin: 0 !important;
